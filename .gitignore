@@ -16,3 +16,5 @@ htmlcov/
 # Corpus build cache (sources & intermediate objects)
 corpus/.build_cache/
 
+
+node_modules/
