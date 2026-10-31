@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm off-white background & pure white cards */
+  --bg-app: #FAFAF9;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F5F5F4;
+  --bg-card-hover: #FAFAF9;
+
+  /* Borders: 1px light gray / warm stone */
+  --border-light: #E7E5E4;
+  --border-subtle: #F5F5F4;
+  --border-hover: #D6D3D1;
+
+  /* Typography */
+  --text-heading: #0F172A; /* slate-900 */
+  --text-body: #475569;    /* slate-600 */
+  --text-muted: #64748B;   /* slate-500 */
+  --text-subtle: #94A3B8;  /* slate-400 */
+
+  /* Deep Indigo Accent */
+  --accent: #4338CA;        /* indigo-700 */
+  --accent-hover: #3730A3;  /* indigo-800 */
+  --accent-subtle: #EEF2FF; /* indigo-50 */
+  --accent-border: #C7D2FE; /* indigo-200 */
+  --accent-glow: rgba(67, 56, 202, 0.12);
+
+  /* Semantic Diff Colors (WCAG AA Compliant: contrast >= 5.5:1 on light bg) */
+  --diff-changed-bg: #FEF3C7;
+  --diff-changed-border: #FCD34D;
+  --diff-changed-text: #92400E;
+
+  --diff-added-bg: #DCFCE7;
+  --diff-added-border: #86EFAC;
+  --diff-added-text: #166534;
+
+  --diff-removed-bg: #FFE4E6;
+  --diff-removed-border: #FDA4AF;
+  --diff-removed-text: #9F1239;
+
+  --diff-unchanged-bg: #F8FAFC;
+  --diff-unchanged-border: #E2E8F0;
+  --diff-unchanged-text: #334155;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-body);
+  }
+
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-body);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading);
+    letter-spacing: -0.025em; /* tight heading tracking */
+  }
+
+  code, pre {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Layered soft shadows for pure white cards */
+.shadow-card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-card-float {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+}
+
+/* Refined custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6D3D1; /* stone-300 */
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E; /* stone-400 */
+}

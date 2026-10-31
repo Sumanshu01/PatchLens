@@ -1,0 +1,182 @@
+{
+  "base_version": "1.2.11",
+  "cve_id": "CVE-2018-25032",
+  "full_release_diff_v1_2_11_to_v1_2_12": {
+    "from_tag": "v1.2.11",
+    "modified_functions": [
+      "_tr_stored_block",
+      "braid",
+      "byte_swap",
+      "compress_block",
+      "crc32",
+      "crc32_big",
+      "crc32_combine",
+      "crc32_combine64",
+      "crc32_combine_",
+      "crc32_combine_gen",
+      "crc32_combine_gen64",
+      "crc32_combine_op",
+      "crc32_little",
+      "crc32_z",
+      "crc_word",
+      "crc_word_big",
+      "deflate",
+      "deflateCopy",
+      "deflateInit2_",
+      "deflateParams",
+      "deflatePrime",
+      "deflateResetKeep",
+      "deflate_fast",
+      "deflate_huff",
+      "deflate_rle",
+      "deflate_slow",
+      "deflate_stored",
+      "detect_data_type",
+      "fill_window",
+      "get_crc_table",
+      "gf2_matrix_square",
+      "gf2_matrix_times",
+      "gz_comp",
+      "gz_read",
+      "gz_reset",
+      "gz_write",
+      "gzgetc",
+      "gzprintf",
+      "gzputs",
+      "gzread",
+      "gzseek64",
+      "gzvprintf",
+      "inflate",
+      "inflateBack",
+      "inflateResetKeep",
+      "inflateSync",
+      "inflateValidate",
+      "inflate_fast",
+      "inflate_table",
+      "init_block",
+      "main",
+      "make_crc_table",
+      "multmodp",
+      "once",
+      "test_and_set",
+      "write_table",
+      "write_table32hi",
+      "write_table64",
+      "x2nmodp"
+    ],
+    "modified_functions_by_file": {
+      "crc32.c": [
+        "braid",
+        "byte_swap",
+        "crc32",
+        "crc32_big",
+        "crc32_combine",
+        "crc32_combine64",
+        "crc32_combine_",
+        "crc32_combine_gen",
+        "crc32_combine_gen64",
+        "crc32_combine_op",
+        "crc32_little",
+        "crc32_z",
+        "crc_word",
+        "crc_word_big",
+        "get_crc_table",
+        "gf2_matrix_square",
+        "gf2_matrix_times",
+        "main",
+        "make_crc_table",
+        "multmodp",
+        "once",
+        "test_and_set",
+        "write_table",
+        "write_table32hi",
+        "write_table64",
+        "x2nmodp"
+      ],
+      "deflate.c": [
+        "deflate",
+        "deflateCopy",
+        "deflateInit2_",
+        "deflateParams",
+        "deflatePrime",
+        "deflateResetKeep",
+        "deflate_fast",
+        "deflate_huff",
+        "deflate_rle",
+        "deflate_slow",
+        "deflate_stored",
+        "fill_window"
+      ],
+      "gzlib.c": [
+        "gz_reset",
+        "gzseek64"
+      ],
+      "gzread.c": [
+        "gz_read",
+        "gzgetc",
+        "gzread"
+      ],
+      "gzwrite.c": [
+        "gz_comp",
+        "gz_write",
+        "gzprintf",
+        "gzputs",
+        "gzvprintf"
+      ],
+      "infback.c": [
+        "inflateBack"
+      ],
+      "inffast.c": [
+        "inflate_fast"
+      ],
+      "inflate.c": [
+        "inflate",
+        "inflateResetKeep",
+        "inflateSync",
+        "inflateValidate"
+      ],
+      "inftrees.c": [
+        "inflate_table"
+      ],
+      "trees.c": [
+        "_tr_stored_block",
+        "compress_block",
+        "detect_data_type",
+        "init_block"
+      ]
+    },
+    "to_tag": "v1.2.12"
+  },
+  "patched_version": "1.2.12",
+  "security_fix_commit": {
+    "message": "Fix a bug that can crash deflate on some input when using Z_FIXED.\n\nThis bug was reported by Danilo Ramos of Eideticom, Inc. It has\nlain in wait 13 years before being found! The bug was introduced\nin zlib 1.2.2.2, with the addition of the Z_FIXED option. That\noption forces the use of fixed Huffman codes. For rare inputs with\na large number of distant matches, the pending buffer into which\nthe compressed data is written can overwrite the distance symbol\ntable which it overlays. That results in corrupted output due to\ninvalid distances, and can result in out-of-bound accesses,\ncrashing the application.\n\nThe fix here combines the distance buffer and literal/length\nbuffers into a single symbol buffer. Now three bytes of pending\nbuffer space are opened up for each literal or length/distance\npair consumed, instead of the previous two bytes. This assures\nthat the pending buffer cannot overwrite the symbol table, since\nthe maximum fixed code compressed length/distance is 31 bits, and\nsince there are four bytes of pending space for every three bytes\nof symbol space.",
+    "modified_functions": [
+      "compress_block",
+      "deflateCopy",
+      "deflateInit2_",
+      "deflatePrime",
+      "deflate_fast",
+      "deflate_huff",
+      "deflate_rle",
+      "deflate_slow",
+      "init_block"
+    ],
+    "modified_functions_by_file": {
+      "deflate.c": [
+        "deflateCopy",
+        "deflateInit2_",
+        "deflatePrime",
+        "deflate_fast",
+        "deflate_huff",
+        "deflate_rle",
+        "deflate_slow"
+      ],
+      "trees.c": [
+        "compress_block",
+        "init_block"
+      ]
+    },
+    "sha": "5c44459c3b28a9bd3283aaceab7c615f8020c531"
+  },
+  "upstream_repository": "https://github.com/madler/zlib.git"
+}

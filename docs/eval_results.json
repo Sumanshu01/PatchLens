@@ -1,0 +1,617 @@
+{
+  "tuning": [
+    {
+      "scenario_name": "same_opt_gcc_o2 (Tuning)",
+      "split": "tuning",
+      "binary_a": "libz-1.2.11-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.11-gcc-O2-stripped.so",
+      "total_a_funcs": 129,
+      "total_b_funcs": 129,
+      "ground_truth_pairs": 131,
+      "matched_pairs": 129,
+      "true_positives": 129,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "precision": 1.0,
+      "recall": 0.9847,
+      "f1": 0.9923,
+      "added_unmatched": 0,
+      "removed_unmatched": 0,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 129,
+          "true_positives": 129,
+          "false_positives": 0,
+          "precision": 1.0
+        }
+      ]
+    },
+    {
+      "scenario_name": "gcc_o2_vs_o3 (Tuning)",
+      "split": "tuning",
+      "binary_a": "libz-1.2.11-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.11-gcc-O3-stripped.so",
+      "total_a_funcs": 129,
+      "total_b_funcs": 125,
+      "ground_truth_pairs": 125,
+      "matched_pairs": 117,
+      "true_positives": 110,
+      "false_positives": 7,
+      "false_negatives": 15,
+      "precision": 0.9402,
+      "recall": 0.88,
+      "f1": 0.9091,
+      "added_unmatched": 8,
+      "removed_unmatched": 12,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 75,
+          "true_positives": 73,
+          "false_positives": 2,
+          "precision": 0.9733
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 9,
+          "true_positives": 9,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 30,
+          "true_positives": 25,
+          "false_positives": 5,
+          "precision": 0.8333
+        }
+      ]
+    },
+    {
+      "scenario_name": "o0_vs_o2 (Tuning)",
+      "split": "tuning",
+      "binary_a": "libz-1.2.11-gcc-O0-stripped.so",
+      "binary_b": "libz-1.2.11-gcc-O2-stripped.so",
+      "total_a_funcs": 151,
+      "total_b_funcs": 129,
+      "ground_truth_pairs": 128,
+      "matched_pairs": 56,
+      "true_positives": 35,
+      "false_positives": 21,
+      "false_negatives": 93,
+      "precision": 0.625,
+      "recall": 0.2734,
+      "f1": 0.3804,
+      "added_unmatched": 73,
+      "removed_unmatched": 95,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 3,
+          "true_positives": 3,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 4,
+          "true_positives": 4,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 48,
+          "true_positives": 27,
+          "false_positives": 21,
+          "precision": 0.5625
+        }
+      ]
+    },
+    {
+      "scenario_name": "gcc_vs_clang (Tuning)",
+      "split": "tuning",
+      "binary_a": "libz-1.2.11-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.11-clang-O2-stripped.so",
+      "total_a_funcs": 129,
+      "total_b_funcs": 120,
+      "ground_truth_pairs": 121,
+      "matched_pairs": 79,
+      "true_positives": 61,
+      "false_positives": 18,
+      "false_negatives": 60,
+      "precision": 0.7722,
+      "recall": 0.5041,
+      "f1": 0.61,
+      "added_unmatched": 41,
+      "removed_unmatched": 50,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 68,
+          "true_positives": 50,
+          "false_positives": 18,
+          "precision": 0.7353
+        }
+      ]
+    }
+  ],
+  "held_out": [
+    {
+      "scenario_name": "patch_gcc_o0 (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-gcc-O0-stripped.so",
+      "binary_b": "libz-1.2.12-gcc-O0-stripped.so",
+      "total_a_funcs": 151,
+      "total_b_funcs": 154,
+      "ground_truth_pairs": 146,
+      "matched_pairs": 145,
+      "true_positives": 140,
+      "false_positives": 5,
+      "false_negatives": 6,
+      "precision": 0.9655,
+      "recall": 0.9589,
+      "f1": 0.9622,
+      "added_unmatched": 9,
+      "removed_unmatched": 6,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 87,
+          "true_positives": 87,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 4,
+          "true_positives": 4,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 31,
+          "true_positives": 31,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 17,
+          "true_positives": 12,
+          "false_positives": 5,
+          "precision": 0.7059
+        }
+      ]
+    },
+    {
+      "scenario_name": "patch_gcc_o2 (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.12-gcc-O2-stripped.so",
+      "total_a_funcs": 129,
+      "total_b_funcs": 132,
+      "ground_truth_pairs": 130,
+      "matched_pairs": 127,
+      "true_positives": 123,
+      "false_positives": 4,
+      "false_negatives": 7,
+      "precision": 0.9685,
+      "recall": 0.9462,
+      "f1": 0.9572,
+      "added_unmatched": 5,
+      "removed_unmatched": 2,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 71,
+          "true_positives": 69,
+          "false_positives": 2,
+          "precision": 0.9718
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 9,
+          "true_positives": 9,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 26,
+          "true_positives": 26,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 15,
+          "true_positives": 13,
+          "false_positives": 2,
+          "precision": 0.8667
+        }
+      ]
+    },
+    {
+      "scenario_name": "patch_gcc_o3 (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-gcc-O3-stripped.so",
+      "binary_b": "libz-1.2.12-gcc-O3-stripped.so",
+      "total_a_funcs": 125,
+      "total_b_funcs": 127,
+      "ground_truth_pairs": 125,
+      "matched_pairs": 123,
+      "true_positives": 120,
+      "false_positives": 3,
+      "false_negatives": 5,
+      "precision": 0.9756,
+      "recall": 0.96,
+      "f1": 0.9677,
+      "added_unmatched": 4,
+      "removed_unmatched": 2,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 66,
+          "true_positives": 64,
+          "false_positives": 2,
+          "precision": 0.9697
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 10,
+          "true_positives": 10,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 5,
+          "true_positives": 5,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 26,
+          "true_positives": 26,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 16,
+          "true_positives": 15,
+          "false_positives": 1,
+          "precision": 0.9375
+        }
+      ]
+    },
+    {
+      "scenario_name": "patch_clang_o2 (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-clang-O2-stripped.so",
+      "binary_b": "libz-1.2.12-clang-O2-stripped.so",
+      "total_a_funcs": 120,
+      "total_b_funcs": 123,
+      "ground_truth_pairs": 124,
+      "matched_pairs": 117,
+      "true_positives": 113,
+      "false_positives": 4,
+      "false_negatives": 11,
+      "precision": 0.9658,
+      "recall": 0.9113,
+      "f1": 0.9378,
+      "added_unmatched": 6,
+      "removed_unmatched": 3,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 57,
+          "true_positives": 55,
+          "false_positives": 2,
+          "precision": 0.9649
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 9,
+          "true_positives": 9,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 8,
+          "true_positives": 8,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 27,
+          "true_positives": 27,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 16,
+          "true_positives": 14,
+          "false_positives": 2,
+          "precision": 0.875
+        }
+      ]
+    },
+    {
+      "scenario_name": "held_out_o0_vs_o2",
+      "split": "held_out",
+      "binary_a": "libz-1.2.12-gcc-O0-stripped.so",
+      "binary_b": "libz-1.2.12-gcc-O2-stripped.so",
+      "total_a_funcs": 154,
+      "total_b_funcs": 132,
+      "ground_truth_pairs": 130,
+      "matched_pairs": 57,
+      "true_positives": 36,
+      "false_positives": 21,
+      "false_negatives": 94,
+      "precision": 0.6316,
+      "recall": 0.2769,
+      "f1": 0.385,
+      "added_unmatched": 75,
+      "removed_unmatched": 97,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 4,
+          "true_positives": 4,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 50,
+          "true_positives": 29,
+          "false_positives": 21,
+          "precision": 0.58
+        }
+      ]
+    },
+    {
+      "scenario_name": "held_out_gcc_vs_clang",
+      "split": "held_out",
+      "binary_a": "libz-1.2.12-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.12-clang-O2-stripped.so",
+      "total_a_funcs": 132,
+      "total_b_funcs": 123,
+      "ground_truth_pairs": 123,
+      "matched_pairs": 82,
+      "true_positives": 60,
+      "false_positives": 22,
+      "false_negatives": 63,
+      "precision": 0.7317,
+      "recall": 0.4878,
+      "f1": 0.5854,
+      "added_unmatched": 41,
+      "removed_unmatched": 50,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 7,
+          "true_positives": 6,
+          "false_positives": 1,
+          "precision": 0.8571
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 70,
+          "true_positives": 49,
+          "false_positives": 21,
+          "precision": 0.7
+        }
+      ]
+    },
+    {
+      "scenario_name": "patch_cross_opt_o0_vs_o2 (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-gcc-O0-stripped.so",
+      "binary_b": "libz-1.2.12-gcc-O2-stripped.so",
+      "total_a_funcs": 151,
+      "total_b_funcs": 132,
+      "ground_truth_pairs": 127,
+      "matched_pairs": 51,
+      "true_positives": 29,
+      "false_positives": 22,
+      "false_negatives": 98,
+      "precision": 0.5686,
+      "recall": 0.2283,
+      "f1": 0.3258,
+      "added_unmatched": 81,
+      "removed_unmatched": 100,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 3,
+          "true_positives": 3,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 44,
+          "true_positives": 22,
+          "false_positives": 22,
+          "precision": 0.5
+        }
+      ]
+    },
+    {
+      "scenario_name": "patch_cross_comp_gcc_vs_clang (Held-Out)",
+      "split": "held_out",
+      "binary_a": "libz-1.2.11-gcc-O2-stripped.so",
+      "binary_b": "libz-1.2.12-clang-O2-stripped.so",
+      "total_a_funcs": 129,
+      "total_b_funcs": 123,
+      "ground_truth_pairs": 120,
+      "matched_pairs": 77,
+      "true_positives": 55,
+      "false_positives": 22,
+      "false_negatives": 65,
+      "precision": 0.7143,
+      "recall": 0.4583,
+      "f1": 0.5584,
+      "added_unmatched": 46,
+      "removed_unmatched": 52,
+      "pass_breakdown": [
+        {
+          "pass_name": "pass1_normalized_exact",
+          "total_assigned": 7,
+          "true_positives": 6,
+          "false_positives": 1,
+          "precision": 0.8571
+        },
+        {
+          "pass_name": "pass2_cfg_structural",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass3_string_constant_anchor",
+          "total_assigned": 2,
+          "true_positives": 2,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass4_callgraph_propagation",
+          "total_assigned": 1,
+          "true_positives": 1,
+          "false_positives": 0,
+          "precision": 1.0
+        },
+        {
+          "pass_name": "pass5_global_hungarian",
+          "total_assigned": 65,
+          "true_positives": 44,
+          "false_positives": 21,
+          "precision": 0.6769
+        }
+      ]
+    }
+  ]
+}

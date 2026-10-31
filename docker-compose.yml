@@ -1,0 +1,77 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: patchlens-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: patchlens-api
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=sqlite:////app/data/patchlens.db
+      - REDIS_URL=redis://redis:6379/0
+      - USE_REDIS=true
+      - PATCHLENS_UPLOAD_DIR=/app/uploads
+      - PATCHLENS_MAX_UPLOAD_MB=50
+    volumes:
+      - uploads_data:/app/uploads
+      - db_data:/app/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: patchlens-worker
+    restart: unless-stopped
+    command: ["rq", "worker", "patchlens_jobs", "--url", "redis://redis:6379/0"]
+    environment:
+      - DATABASE_URL=sqlite:////app/data/patchlens.db
+      - REDIS_URL=redis://redis:6379/0
+      - USE_REDIS=true
+      - PATCHLENS_UPLOAD_DIR=/app/uploads
+    volumes:
+      - uploads_data:/app/uploads
+      - db_data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_started
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: patchlens-web
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  uploads_data:
+  db_data:
+

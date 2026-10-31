@@ -1,0 +1,119 @@
+{
+  "binaries": [
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.11-gcc-O0-unstripped.so",
+      "opt_flag": "-O0",
+      "sha256": "4b263b7da3c6b2e8c27527126ccebbb21ff30a4f003e601a6f0af3ecb5f7a3fa",
+      "stripped": false,
+      "variant": "gcc-O0",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.11-gcc-O0-stripped.so",
+      "opt_flag": "-O0",
+      "sha256": "a64af315dc27864384233b7e1df4e4104d6ea4bc9764b8b31df9acb1f9d9b0ab",
+      "stripped": true,
+      "variant": "gcc-O0",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.11-gcc-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "sha256": "f08543153ae73c0fad023c24076e9b853abc1865016ff9623837f775bc3890ec",
+      "stripped": false,
+      "variant": "gcc-O2",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.11-gcc-O2-stripped.so",
+      "opt_flag": "-O2",
+      "sha256": "17f9d689a2b19c02b1c391465b26feea1bc3b0d1981fd5222466cc1917da932b",
+      "stripped": true,
+      "variant": "gcc-O2",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "clang",
+      "filename": "libcjson-1.7.11-clang-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "sha256": "94bc9c4fe7905f51392d947cd588aa65a7bcafebdc4d32fd7ea23f8b59f40615",
+      "stripped": false,
+      "variant": "clang-O2",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "clang",
+      "filename": "libcjson-1.7.11-clang-O2-stripped.so",
+      "opt_flag": "-O2",
+      "sha256": "5c257d033d09bd161ba82a8316c1b73ee1f90882322db4721b0d873c76901f48",
+      "stripped": true,
+      "variant": "clang-O2",
+      "version": "1.7.11"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.12-gcc-O0-unstripped.so",
+      "opt_flag": "-O0",
+      "sha256": "5bd0ce540c060b5263122b859162963ee820215954aef46d4205f393f4157c4a",
+      "stripped": false,
+      "variant": "gcc-O0",
+      "version": "1.7.12"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.12-gcc-O0-stripped.so",
+      "opt_flag": "-O0",
+      "sha256": "a77f003120a690d3585ab5eb9af89660df69f609c402cd9441deacbffaa0a278",
+      "stripped": true,
+      "variant": "gcc-O0",
+      "version": "1.7.12"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.12-gcc-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "sha256": "187a7206c08a7530ffdbcb44d7ef175d381c8b6524e554ee6dcef3450d996d53",
+      "stripped": false,
+      "variant": "gcc-O2",
+      "version": "1.7.12"
+    },
+    {
+      "compiler": "gcc",
+      "filename": "libcjson-1.7.12-gcc-O2-stripped.so",
+      "opt_flag": "-O2",
+      "sha256": "3cb0ec5d356e4bdbf75b3bb3b01997eed7f6d6653a830d91faf7864728092413",
+      "stripped": true,
+      "variant": "gcc-O2",
+      "version": "1.7.12"
+    },
+    {
+      "compiler": "clang",
+      "filename": "libcjson-1.7.12-clang-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "sha256": "2a45b14849b0a45051b1c7196bd5586cbab7a3b380049470c9ad4d52da947b44",
+      "stripped": false,
+      "variant": "clang-O2",
+      "version": "1.7.12"
+    },
+    {
+      "compiler": "clang",
+      "filename": "libcjson-1.7.12-clang-O2-stripped.so",
+      "opt_flag": "-O2",
+      "sha256": "312dfc21f296a4323ac20ee0343b132aef69b53637dc8d0eb0c971cc0d998156",
+      "stripped": true,
+      "variant": "clang-O2",
+      "version": "1.7.12"
+    }
+  ],
+  "cve": "CVE-2019-1010239",
+  "patched_function": "cJSON_Minify",
+  "project": "cJSON Benchmark Corpus",
+  "versions": [
+    "1.7.11",
+    "1.7.12"
+  ]
+}

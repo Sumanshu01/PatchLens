@@ -1,0 +1,18 @@
+# Python build & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Corpus build cache (sources & intermediate objects)
+corpus/.build_cache/
+

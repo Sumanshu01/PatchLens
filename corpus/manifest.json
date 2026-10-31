@@ -1,0 +1,219 @@
+{
+  "binaries": [
+    {
+      "build_command": "gcc -O0 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O0-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O0-unstripped.so",
+      "opt_flag": "-O0",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O0-unstripped.so",
+      "sha256": "0610bd197395e39324340953c03b31b7fc43b1fa74a692ea86dab29915b613fa",
+      "size_bytes": 207288,
+      "stripped": false,
+      "variant": "gcc-O0",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O0 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O0-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.11-gcc-O0-stripped.so libz-1.2.11-gcc-O0-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O0-stripped.so",
+      "opt_flag": "-O0",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O0-stripped.so",
+      "sha256": "6eaf26a5eed19c3664362d0f25b1af73cebf54f48e3e6d9a50fa97930e0d7426",
+      "size_bytes": 121304,
+      "stripped": true,
+      "variant": "gcc-O0",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O2-unstripped.so",
+      "sha256": "f8321f1bf679ea29124cb667d3630cbc755c08973df55cb51cb3765c8389b0b0",
+      "size_bytes": 280832,
+      "stripped": false,
+      "variant": "gcc-O2",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.11-gcc-O2-stripped.so libz-1.2.11-gcc-O2-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O2-stripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O2-stripped.so",
+      "sha256": "e398cc2c316ce9133c3df54617a73202fd16e77b12cb4eca3e92e02dba188e1c",
+      "size_bytes": 100824,
+      "stripped": true,
+      "variant": "gcc-O2",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O3 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O3-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O3-unstripped.so",
+      "opt_flag": "-O3",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O3-unstripped.so",
+      "sha256": "08cfdd836913b54b84fdf33a9d3f039296044583d7cc1084415c64c9c2a4fada",
+      "size_bytes": 325120,
+      "stripped": false,
+      "variant": "gcc-O3",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O3 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-gcc-O3-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.11-gcc-O3-stripped.so libz-1.2.11-gcc-O3-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.11-gcc-O3-stripped.so",
+      "opt_flag": "-O3",
+      "relative_path": "corpus/binaries/libz-1.2.11-gcc-O3-stripped.so",
+      "sha256": "9162dbdf393d8db9cbb92cb7296a6ad7200ad8a4a124571193835e343cfda687",
+      "size_bytes": 113112,
+      "stripped": true,
+      "variant": "gcc-O3",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "clang -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-clang-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "clang",
+      "filename": "libz-1.2.11-clang-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.11-clang-O2-unstripped.so",
+      "sha256": "33ea2fc96da2caf5d33f6fc98ab5800ad948607ddcf68452ad547d49db8b9109",
+      "size_bytes": 242696,
+      "stripped": false,
+      "variant": "clang-O2",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "clang -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.11-clang-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.11-clang-O2-stripped.so libz-1.2.11-clang-O2-unstripped.so",
+      "compiler": "clang",
+      "filename": "libz-1.2.11-clang-O2-stripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.11-clang-O2-stripped.so",
+      "sha256": "69a8b6adc36d25cb4b2d6d99d3c053976bccd0c2863801685fd1edd91337592a",
+      "size_bytes": 104760,
+      "stripped": true,
+      "variant": "clang-O2",
+      "version": "1.2.11"
+    },
+    {
+      "build_command": "gcc -O0 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O0-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O0-unstripped.so",
+      "opt_flag": "-O0",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O0-unstripped.so",
+      "sha256": "7c10e052747af731fa4e12e0ee93301b059f21dda5a4c0b034e510966e83047f",
+      "size_bytes": 229840,
+      "stripped": false,
+      "variant": "gcc-O0",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "gcc -O0 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O0-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.12-gcc-O0-stripped.so libz-1.2.12-gcc-O0-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O0-stripped.so",
+      "opt_flag": "-O0",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O0-stripped.so",
+      "sha256": "ff2572d2df2186dabfeaf6c067e2884b2908727e57b0abf51dbfe5fcb0acb85d",
+      "size_bytes": 141808,
+      "stripped": true,
+      "variant": "gcc-O0",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "gcc -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O2-unstripped.so",
+      "sha256": "4b0696c8685a7299246b50fda4b91f12a6ffa99cc2f40341523b6edcecd159db",
+      "size_bytes": 300296,
+      "stripped": false,
+      "variant": "gcc-O2",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "gcc -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.12-gcc-O2-stripped.so libz-1.2.12-gcc-O2-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O2-stripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O2-stripped.so",
+      "sha256": "9c19e5b9ce5fd00355133e516b9fb669878d132e0c111e556836fb7cfcdc65e4",
+      "size_bytes": 100848,
+      "stripped": true,
+      "variant": "gcc-O2",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "gcc -O3 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O3-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O3-unstripped.so",
+      "opt_flag": "-O3",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O3-unstripped.so",
+      "sha256": "70b5870eac61c567014ff6b812a4bedef2b0da6f8099be3bb07c48e527f96721",
+      "size_bytes": 357976,
+      "stripped": false,
+      "variant": "gcc-O3",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "gcc -O3 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-gcc-O3-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.12-gcc-O3-stripped.so libz-1.2.12-gcc-O3-unstripped.so",
+      "compiler": "gcc",
+      "filename": "libz-1.2.12-gcc-O3-stripped.so",
+      "opt_flag": "-O3",
+      "relative_path": "corpus/binaries/libz-1.2.12-gcc-O3-stripped.so",
+      "sha256": "ea0e06a95ce36dc1e7e1b195c29eead17660ea4113648e01e91f0c9d7afb4489",
+      "size_bytes": 117232,
+      "stripped": true,
+      "variant": "gcc-O3",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "clang -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-clang-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc",
+      "compiler": "clang",
+      "filename": "libz-1.2.12-clang-O2-unstripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.12-clang-O2-unstripped.so",
+      "sha256": "36b662170509e7fd3f5b9eb64d886d60a0b71c5b0d6746ec425360a1c1ebeed0",
+      "size_bytes": 247488,
+      "stripped": false,
+      "variant": "clang-O2",
+      "version": "1.2.12"
+    },
+    {
+      "build_command": "clang -O2 -g -std=gnu11 -Wno-deprecated-non-prototype -fPIC -shared -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DZLIB_INTERNAL -Wl,-soname,libz.so.1 -o libz-1.2.12-clang-O2-unstripped.so adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c infback.c inffast.c inflate.c inftrees.c trees.c uncompr.c zutil.c -lc && strip --strip-all -o libz-1.2.12-clang-O2-stripped.so libz-1.2.12-clang-O2-unstripped.so",
+      "compiler": "clang",
+      "filename": "libz-1.2.12-clang-O2-stripped.so",
+      "opt_flag": "-O2",
+      "relative_path": "corpus/binaries/libz-1.2.12-clang-O2-stripped.so",
+      "sha256": "99e3a47d74e4cbc0112b2f65177578bf6c59d41aea0682b136f2bf56d7509114",
+      "size_bytes": 104768,
+      "stripped": true,
+      "variant": "clang-O2",
+      "version": "1.2.12"
+    }
+  ],
+  "cve": "CVE-2018-25032",
+  "cve_modified_functions": [
+    "compress_block",
+    "deflateCopy",
+    "deflateInit2_",
+    "deflatePrime",
+    "deflate_fast",
+    "deflate_huff",
+    "deflate_rle",
+    "deflate_slow",
+    "init_block"
+  ],
+  "ground_truth_file": "corpus/ground_truth/cve_2018_25032.json",
+  "project": "PatchLens Benchmark Corpus",
+  "target": "zlib",
+  "toolchain": {
+    "clang": "Ubuntu clang version 21.1.8 (6ubuntu1)",
+    "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0"
+  },
+  "versions": [
+    "1.2.11",
+    "1.2.12"
+  ]
+}
