@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .
           pip install ruff mypy pytest pytest-cov types-networkx \
-            fastapi uvicorn sqlalchemy alembic prometheus-client redis rq httpx
+            fastapi uvicorn sqlalchemy alembic prometheus-client redis rq httpx python-multipart
 
       - name: Lint and Format Check (Ruff)
         run: |
@@ -91,7 +91,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y libcapstone-dev
           pip install --upgrade pip
           pip install -e .
-          pip install fastapi uvicorn sqlalchemy alembic prometheus-client redis rq httpx playwright
+          pip install fastapi uvicorn sqlalchemy alembic prometheus-client redis rq httpx python-multipart playwright
           playwright install --with-deps chromium
 
       - name: Install and Build Frontend

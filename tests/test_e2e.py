@@ -2,14 +2,19 @@
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
+import sys
 import time
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
+try:
+    from playwright.sync_api import sync_playwright
+except ImportError:
+    sync_playwright = None  # type: ignore[assignment]
 
-ARTIFACT_DIR = Path(r"C:\Users\PC\.gemini\antigravity\brain\c0d7caeb-c8af-43bc-982a-a28ff385be50")
+ARTIFACT_DIR = Path(os.environ.get("PATCHLENS_ARTIFACT_DIR", "web/e2e_screenshots"))
 SCREENSHOTS_DIR = ARTIFACT_DIR / "screenshots"
 SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
 VIDEO_DIR = Path("web/e2e_videos")
@@ -18,11 +23,17 @@ VIDEO_DIR.mkdir(parents=True, exist_ok=True)
 
 def run_e2e_test_and_recording() -> None:
     """Launch servers, execute user flow, assert UI states, and record video artifact."""
+    if sync_playwright is None:
+        raise ImportError(
+            "playwright is required for E2E tests: "
+            "install via `pip install playwright && playwright install chromium`"
+        )
+
     print("[E2E] Starting PatchLens FastAPI backend server...")
     root_dir = Path(__file__).resolve().parent.parent
     backend_proc = subprocess.Popen(
         [
-            "python",
+            sys.executable,
             "-m",
             "uvicorn",
             "api.main:app",
@@ -38,8 +49,9 @@ def run_e2e_test_and_recording() -> None:
 
     print("[E2E] Starting PatchLens Vite frontend preview server...")
     web_dir = Path(__file__).resolve().parent.parent / "web"
+    npm_cmd = "npm.cmd" if sys.platform == "win32" else "npm"
     frontend_proc = subprocess.Popen(
-        ["npm.cmd", "run", "preview", "--", "--port", "5173", "--host", "127.0.0.1"],
+        [npm_cmd, "run", "preview", "--", "--port", "5173", "--host", "127.0.0.1"],
         cwd=str(web_dir),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
