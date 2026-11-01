@@ -26,6 +26,14 @@ export const LandingPage: React.FC = () => {
   // Active section for right rail dial
   const [activeSection, setActiveSection] = useState<"INTRO" | "PROBLEM" | "FEATURES" | "PIPELINE" | "RESULTS">("INTRO");
 
+  const navItems = [
+    { id: "problem", href: "#problem", label: "Problem & Solution" },
+    { id: "features", href: "#features", label: "Features" },
+    { id: "how-it-works", href: "#how-it-works", label: "How It Works" },
+    { id: "results", href: "#results", label: "Headline Results" },
+    { id: "limitations", href: "#limitations", label: "Limitations" },
+  ];
+
   // Auto-typing prompt state
   const patchPrompts = [
     "Locate CVE-2018-25032 deflate buffer vulnerability in stripped zlib.so",
@@ -242,31 +250,37 @@ export const LandingPage: React.FC = () => {
           </Link>
 
           {/* Menu Cell (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-8 font-mono text-xs uppercase tracking-wider text-slate-700">
-            <a href="#problem" className="hover:text-indigo-700 transition-colors">
-              Problem & Solution
-            </a>
-            <a href="#features" className="hover:text-indigo-700 transition-colors">
-              Features
-            </a>
-            <a href="#how-it-works" className="hover:text-indigo-700 transition-colors">
-              How It Works
-            </a>
-            <a href="#results" className="hover:text-indigo-700 transition-colors">
-              Headline Results
-            </a>
-            <a href="#limitations" className="hover:text-indigo-700 transition-colors">
-              Limitations
-            </a>
+          <div className="hidden lg:flex items-center space-x-2 font-mono text-xs uppercase tracking-wider text-slate-700">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className="group relative inline-flex items-center px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider text-slate-700 hover:text-slate-900 border border-transparent hover:border-slate-900 hover:bg-white hover:shadow-[2px_2px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all duration-150 select-none"
+              >
+                {/* 4 Maximalist Technical Corner Brackets - strictly visible on cursor hover */}
+                <span className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t border-l border-slate-900 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+                <span className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t border-r border-slate-900 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+                <span className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b border-l border-slate-900 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+                <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b border-r border-slate-900 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+
+                <span>{item.label}</span>
+              </a>
+            ))}
           </div>
 
           {/* Launch Analyzer Button Cell (Right side) - NOVA 3D button removed */}
           <div className="flex items-center space-x-3">
             <Link
               to="/analyze"
-              className="relative inline-flex items-center justify-center space-x-2.5 px-6 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider text-slate-900 border border-stone-900/25 bg-white/85 hover:bg-white shadow-xs hover:shadow-sm active:scale-95 transition-all group"
+              className="group relative inline-flex items-center justify-center space-x-2.5 px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-slate-900 border border-slate-900 bg-white hover:bg-stone-50 shadow-[2px_2px_0px_#141414] hover:shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
             >
-              <div className="absolute inset-[-1px] rounded-xl pointer-events-none [clip-path:polygon(0_0,55%_0,55%_2px,2px_2px,2px_100%,0_100%)] bg-gradient-to-br from-[#ffb347] via-[#ff5a5f] to-[#ff3d8b]" />
+              {/* 4 Maximalist Technical Corner Brackets */}
+              <span className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t border-l border-slate-900 pointer-events-none" />
+              <span className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t border-r border-slate-900 pointer-events-none" />
+              <span className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b border-l border-slate-900 pointer-events-none" />
+              <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b border-r border-slate-900 pointer-events-none" />
+
+              <div className="absolute inset-[-1px] pointer-events-none [clip-path:polygon(0_0,55%_0,55%_2px,2px_2px,2px_100%,0_100%)] bg-gradient-to-br from-[#ffb347] via-[#ff5a5f] to-[#ff3d8b]" />
               <span>•• Launch Analyzer</span>
               <ArrowRight className="w-3.5 h-3.5 text-indigo-700 group-hover:translate-x-0.5 transition-transform" />
             </Link>

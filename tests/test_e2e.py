@@ -19,6 +19,7 @@ VIDEO_DIR.mkdir(parents=True, exist_ok=True)
 def run_e2e_test_and_recording() -> None:
     """Launch servers, execute user flow, assert UI states, and record video artifact."""
     print("[E2E] Starting PatchLens FastAPI backend server...")
+    root_dir = Path(__file__).resolve().parent.parent
     backend_proc = subprocess.Popen(
         [
             "python",
@@ -30,6 +31,7 @@ def run_e2e_test_and_recording() -> None:
             "--port",
             "8000",
         ],
+        cwd=str(root_dir),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
@@ -84,7 +86,22 @@ def run_e2e_test_and_recording() -> None:
             page.screenshot(path=str(SCREENSHOTS_DIR / "1_landing_page.png"))
             print("[E2E] Step 1 OK: Landing page verified.")
 
+            print("[E2E] Step 1b: Testing maximalist navbar hover box...")
+            features_btn = page.wait_for_selector("a:has-text('Features')", timeout=5000)
+            features_btn.hover()
+            page.wait_for_timeout(400)
+            page.screenshot(path=str(SCREENSHOTS_DIR / "1b_navbar_hover_box.png"))
+            print("[E2E] Step 1b OK: Navbar hover box verified.")
+
+            print("[E2E] Step 1c: Testing maximalist navbar click box...")
+            features_btn.click()
+            page.wait_for_timeout(600)
+            page.screenshot(path=str(SCREENSHOTS_DIR / "1c_navbar_clicked_box.png"))
+            print("[E2E] Step 1c OK: Navbar clicked box verified.")
+
             print("[E2E] Step 2: Clicking 'Try CVE-2018-25032 sample' CTA on Landing Page...")
+            page.evaluate("window.scrollTo(0, 0)")
+            page.wait_for_timeout(300)
             sample_btn = page.wait_for_selector("text=Try CVE-2018-25032 sample", timeout=5000)
             t0 = time.perf_counter()
             sample_btn.click()

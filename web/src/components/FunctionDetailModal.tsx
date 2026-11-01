@@ -62,11 +62,10 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
       });
   }, [resultId, fnDiff.rank]);
 
-  // Cytoscape initialization for Side-by-side CFG in Light Mode
+  // Cytoscape initialization for Side-by-side CFG
   useEffect(() => {
     if (activeTab !== "cfg" || !detail) return;
 
-    // Accessible high-contrast node styling for light background
     const getNodeStyle = (type: string) => {
       switch (type) {
         case "added":
@@ -76,7 +75,7 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
         case "modified":
           return { bg: "#FEF3C7", border: "#D97706", text: "#78350F" };
         default:
-          return { bg: "#FFFFFF", border: "#CBD5E1", text: "#1E293B" };
+          return { bg: "#FFFFFF", border: "#141414", text: "#0F172A" };
       }
     };
 
@@ -91,7 +90,7 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
         case "call":
           return "#9333EA";
         default:
-          return "#94A3B8";
+          return "#475569";
       }
     };
 
@@ -148,9 +147,9 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
               color: "data(textColor)",
               "background-color": "data(bgColor)",
               shape: "round-rectangle",
-              width: "125px",
+              width: "128px",
               height: "48px",
-              "border-width": 2,
+              "border-width": 1.5,
               "border-color": "data(borderColor)",
             },
           },
@@ -232,9 +231,9 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
               color: "data(textColor)",
               "background-color": "data(bgColor)",
               shape: "round-rectangle",
-              width: "125px",
+              width: "128px",
               height: "48px",
-              "border-width": 2,
+              "border-width": 1.5,
               "border-color": "data(borderColor)",
             },
           },
@@ -305,13 +304,19 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-2 sm:p-4">
-      <div className="w-full max-w-6xl h-[92vh] flex flex-col rounded-2xl bg-white shadow-2xl border border-stone-200 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-2 sm:p-4">
+      <div className="relative w-full max-w-6xl h-[92vh] flex flex-col rounded-2xl bg-[#efece6] shadow-[8px_8px_0px_#141414] border-2 border-slate-900 overflow-hidden">
+        {/* 4 Corner Brackets */}
+        <span className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-slate-900 z-50 pointer-events-none" />
+        <span className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-2 border-r-2 border-slate-900 z-50 pointer-events-none" />
+        <span className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-2 border-l-2 border-slate-900 z-50 pointer-events-none" />
+        <span className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-slate-900 z-50 pointer-events-none" />
+
         {/* Header */}
-        <div className="px-6 py-4 border-b border-stone-200 flex items-center justify-between bg-stone-50/70">
-          <div className="flex items-center space-x-3">
+        <div className="px-6 py-4 border-b border-slate-900 bg-white/95 flex items-center justify-between">
+          <div className="flex items-center space-x-3.5">
             {fnDiff.rank > 0 && (
-              <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-rose-600 text-white shadow-2xs">
+              <span className="px-3 py-1 rounded font-mono font-black text-xs bg-rose-600 text-white shadow-[1px_1px_0px_#141414]">
                 RANK #{fnDiff.rank}
               </span>
             )}
@@ -321,16 +326,16 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
                 <span className="text-slate-400 font-normal">→</span>
                 <span>{fnDiff.name_b}</span>
               </h3>
-              <div className="flex items-center space-x-3 text-xs text-slate-500 mt-0.5">
+              <div className="flex items-center space-x-3 text-xs font-mono text-slate-600 mt-0.5">
                 <span>
-                  Similarity: <b className="text-slate-800">{(fnDiff.similarity * 100).toFixed(1)}%</b>
+                  Similarity: <b className="text-slate-950 font-bold">{(fnDiff.similarity * 100).toFixed(1)}%</b>
                 </span>
                 <span>•</span>
                 <span>
-                  Patch Score: <b className="text-slate-800">{fnDiff.patch_score.toFixed(4)}</b>
+                  Patch Score: <b className="text-slate-950 font-bold">{fnDiff.patch_score.toFixed(4)}</b>
                 </span>
                 <span>•</span>
-                <span className="capitalize font-medium text-slate-700">{fnDiff.classification}</span>
+                <span className="capitalize font-bold text-indigo-700">{fnDiff.classification}</span>
               </div>
             </div>
           </div>
@@ -338,72 +343,95 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
           <div className="flex items-center space-x-2">
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-stone-100 transition-colors"
+              className="p-2 rounded-lg border border-slate-900 bg-white hover:bg-stone-50 shadow-[1px_1px_0px_#141414] active:shadow-none text-slate-800 transition-all cursor-pointer"
+              title="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="px-6 border-b border-stone-200 flex items-center justify-between bg-white">
-          <div className="flex space-x-6 text-xs font-semibold">
+        {/* Tab Navigation (Neo-brutalist Tab Strip) */}
+        <div className="px-6 py-2.5 border-b border-slate-900 bg-[#efece6] flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center space-x-2 font-mono text-xs uppercase tracking-wider">
             <button
               onClick={() => setActiveTab("cfg")}
-              className={`py-3.5 border-b-2 flex items-center space-x-2 transition-colors cursor-pointer ${
+              className={`relative inline-flex items-center space-x-2 px-3.5 py-2 border transition-all cursor-pointer font-bold ${
                 activeTab === "cfg"
-                  ? "border-indigo-600 text-indigo-700 font-bold"
-                  : "border-transparent text-slate-500 hover:text-slate-900"
+                  ? "bg-white text-slate-900 border-slate-900 shadow-[2px_2px_0px_#141414]"
+                  : "bg-transparent text-slate-700 border-transparent hover:border-slate-900 hover:bg-white"
               }`}
             >
-              <Layers className="w-4 h-4" />
-              <span>Side-by-Side CFG</span>
+              {activeTab === "cfg" && (
+                <>
+                  <span className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t border-r border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b border-r border-slate-900 pointer-events-none" />
+                </>
+              )}
+              <Layers className="w-3.5 h-3.5 text-indigo-700" />
+              <span>[01] Side-by-Side CFG</span>
             </button>
 
             <button
               onClick={() => setActiveTab("diff")}
-              className={`py-3.5 border-b-2 flex items-center space-x-2 transition-colors cursor-pointer ${
+              className={`relative inline-flex items-center space-x-2 px-3.5 py-2 border transition-all cursor-pointer font-bold ${
                 activeTab === "diff"
-                  ? "border-indigo-600 text-indigo-700 font-bold"
-                  : "border-transparent text-slate-500 hover:text-slate-900"
+                  ? "bg-white text-slate-900 border-slate-900 shadow-[2px_2px_0px_#141414]"
+                  : "bg-transparent text-slate-700 border-transparent hover:border-slate-900 hover:bg-white"
               }`}
             >
-              <FileDiff className="w-4 h-4" />
-              <span>Instruction-Level Diff</span>
+              {activeTab === "diff" && (
+                <>
+                  <span className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t border-r border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b border-r border-slate-900 pointer-events-none" />
+                </>
+              )}
+              <FileDiff className="w-3.5 h-3.5 text-indigo-700" />
+              <span>[02] Instruction-Level Diff</span>
             </button>
 
             <button
               onClick={() => setActiveTab("match")}
-              className={`py-3.5 border-b-2 flex items-center space-x-2 transition-colors cursor-pointer ${
+              className={`relative inline-flex items-center space-x-2 px-3.5 py-2 border transition-all cursor-pointer font-bold ${
                 activeTab === "match"
-                  ? "border-indigo-600 text-indigo-700 font-bold"
-                  : "border-transparent text-slate-500 hover:text-slate-900"
+                  ? "bg-white text-slate-900 border-slate-900 shadow-[2px_2px_0px_#141414]"
+                  : "bg-transparent text-slate-700 border-transparent hover:border-slate-900 hover:bg-white"
               }`}
             >
-              <HelpCircle className="w-4 h-4" />
-              <span>Why This Match?</span>
+              {activeTab === "match" && (
+                <>
+                  <span className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t border-r border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b border-l border-slate-900 pointer-events-none" />
+                  <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b border-r border-slate-900 pointer-events-none" />
+                </>
+              )}
+              <HelpCircle className="w-3.5 h-3.5 text-indigo-700" />
+              <span>[03] Why This Match?</span>
             </button>
           </div>
 
           {activeTab === "cfg" && (
-            <div className="flex items-center space-x-2 text-xs">
+            <div className="flex items-center space-x-2 font-mono text-xs">
               <button
                 onClick={() => setSyncPanZoom(!syncPanZoom)}
-                className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1.5 font-medium transition-colors cursor-pointer ${
-                  syncPanZoom
-                    ? "bg-indigo-50 text-indigo-700 border-indigo-200"
-                    : "bg-white text-slate-600 border-stone-300"
+                className={`px-3 py-1.5 rounded border border-slate-900 flex items-center space-x-1.5 font-bold shadow-[1px_1px_0px_#141414] active:shadow-none transition-all cursor-pointer ${
+                  syncPanZoom ? "bg-white text-indigo-700" : "bg-stone-200 text-slate-700"
                 }`}
               >
-                {syncPanZoom ? <Lock className="w-3.5 h-3.5 text-indigo-600" /> : <Unlock className="w-3.5 h-3.5" />}
-                <span>{syncPanZoom ? "Sync Zoom/Pan On" : "Sync Zoom/Pan Off"}</span>
+                {syncPanZoom ? <Lock className="w-3 h-3 text-indigo-700" /> : <Unlock className="w-3 h-3" />}
+                <span>{syncPanZoom ? "Sync Zoom: ON" : "Sync Zoom: OFF"}</span>
               </button>
 
               <button
                 onClick={resetViews}
-                className="px-2.5 py-1 rounded-lg border border-stone-300 text-slate-600 hover:bg-stone-50 flex items-center space-x-1 cursor-pointer"
+                className="px-3 py-1.5 rounded border border-slate-900 bg-white hover:bg-stone-50 shadow-[1px_1px_0px_#141414] active:shadow-none text-slate-800 flex items-center space-x-1 font-bold cursor-pointer"
               >
-                <Maximize2 className="w-3.5 h-3.5" />
+                <Maximize2 className="w-3 h-3" />
                 <span>Reset View</span>
               </button>
             </div>
@@ -411,21 +439,21 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
         </div>
 
         {/* Tab Body */}
-        <div className="flex-1 relative overflow-hidden bg-[#FAFAF9]">
+        <div className="flex-1 relative overflow-hidden bg-[#efece6]/60">
           {loading ? (
-            <div className="h-full flex items-center justify-center text-sm text-slate-400">
-              Loading function diff details...
+            <div className="h-full flex items-center justify-center font-mono text-xs text-slate-500">
+              // Loading function diff details and basic blocks...
             </div>
           ) : (
             <>
               {/* TAB 1: CFG VIEWER */}
               {activeTab === "cfg" && (
-                <div className="h-full grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-stone-200 relative">
+                <div className="h-full grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-900 relative">
                   {/* Left: CFG A */}
-                  <div className="relative h-full flex flex-col bg-[#FAFAF9]">
-                    <div className="p-3 bg-white/90 backdrop-blur-xs border-b border-stone-200 flex items-center justify-between text-xs font-semibold text-slate-700">
-                      <span>Baseline CFG ({fnDiff.name_a})</span>
-                      <span className="font-mono text-slate-400">
+                  <div className="relative h-full flex flex-col bg-[#efece6]/50">
+                    <div className="p-3 bg-white/95 border-b border-slate-900 flex items-center justify-between text-xs font-mono font-bold text-slate-800">
+                      <span>BASELINE CFG ({fnDiff.name_a})</span>
+                      <span className="text-slate-500">
                         {detail?.cfg_a?.blocks.length || 0} blocks
                       </span>
                     </div>
@@ -433,10 +461,10 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
                   </div>
 
                   {/* Right: CFG B */}
-                  <div className="relative h-full flex flex-col bg-[#FAFAF9]">
-                    <div className="p-3 bg-white/90 backdrop-blur-xs border-b border-stone-200 flex items-center justify-between text-xs font-semibold text-slate-700">
-                      <span>Patched CFG ({fnDiff.name_b})</span>
-                      <span className="font-mono text-slate-400">
+                  <div className="relative h-full flex flex-col bg-[#efece6]/50">
+                    <div className="p-3 bg-white/95 border-b border-slate-900 flex items-center justify-between text-xs font-mono font-bold text-slate-800">
+                      <span>PATCHED CFG ({fnDiff.name_b})</span>
+                      <span className="text-slate-500">
                         {detail?.cfg_b?.blocks.length || 0} blocks
                       </span>
                     </div>
@@ -445,21 +473,21 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
 
                   {/* Block Inspector Drawer */}
                   {selectedBlock && (
-                    <div className="absolute right-4 bottom-4 w-96 max-h-80 rounded-2xl bg-white text-slate-800 p-4 shadow-xl border border-stone-300 flex flex-col z-20">
+                    <div className="absolute right-4 bottom-4 w-96 max-h-80 rounded-2xl bg-white text-slate-800 p-4 shadow-[4px_4px_0px_#141414] border-2 border-slate-900 flex flex-col z-20">
                       <div className="flex items-center justify-between pb-2 border-b border-stone-200 mb-2">
                         <span className="font-mono font-bold text-xs text-slate-900">
                           Block 0x{selectedBlock.block.addr.toString(16)} (Side {selectedBlock.side})
                         </span>
                         <button
                           onClick={() => setSelectedBlock(null)}
-                          className="text-slate-400 hover:text-slate-700"
+                          className="text-slate-500 hover:text-slate-900"
                         >
                           <X className="w-4 h-4" />
                         </button>
                       </div>
                       <div className="flex-1 overflow-auto font-mono text-[11px] space-y-1">
                         {selectedBlock.block.instructions.map((insn, i) => (
-                          <div key={i} className="text-slate-700">
+                          <div key={i} className="text-slate-800">
                             {insn}
                           </div>
                         ))}
@@ -471,18 +499,22 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
 
               {/* TAB 2: INSTRUCTION UNIFIED DIFF */}
               {activeTab === "diff" && (
-                <div className="h-full overflow-auto p-6 bg-[#FAFAF9]">
+                <div className="h-full overflow-auto p-6 bg-[#efece6]/60">
                   {detail?.unified_diff ? (
-                    <div className="max-w-4xl mx-auto rounded-2xl bg-white p-6 font-mono text-xs text-slate-800 border border-stone-200 shadow-card">
-                      <pre className="whitespace-pre-wrap leading-relaxed">
+                    <div className="max-w-4xl mx-auto rounded-2xl bg-slate-950 p-6 font-mono text-xs text-slate-200 border-2 border-slate-900 shadow-[4px_4px_0px_#141414]">
+                      <div className="pb-3 mb-4 border-b border-slate-800 flex items-center justify-between text-slate-400 text-[11px]">
+                        <span>UNIFIED DISASSEMBLY DIFF</span>
+                        <span className="text-indigo-400">NORMALIZED REGISTERS</span>
+                      </div>
+                      <pre className="whitespace-pre-wrap leading-relaxed font-mono">
                         {detail.unified_diff.split("\n").map((line, i) => {
-                          let lineStyle = "text-slate-600";
+                          let lineStyle = "text-slate-400";
                           if (line.startsWith("+") && !line.startsWith("+++")) {
-                            lineStyle = "text-emerald-900 bg-emerald-50 px-1 py-0.5 rounded-xs border-l-2 border-emerald-500 font-semibold";
+                            lineStyle = "text-emerald-300 bg-emerald-950/70 px-1 py-0.5 border-l-2 border-emerald-400 font-semibold";
                           } else if (line.startsWith("-") && !line.startsWith("---")) {
-                            lineStyle = "text-rose-900 bg-rose-50 px-1 py-0.5 rounded-xs border-l-2 border-rose-500 font-semibold";
+                            lineStyle = "text-rose-300 bg-rose-950/70 px-1 py-0.5 border-l-2 border-rose-400 font-semibold";
                           } else if (line.startsWith("@@")) {
-                            lineStyle = "text-indigo-700 font-bold py-1";
+                            lineStyle = "text-indigo-400 font-bold py-1";
                           }
                           return (
                             <div key={i} className={lineStyle}>
@@ -493,8 +525,8 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
                       </pre>
                     </div>
                   ) : (
-                    <div className="h-full flex items-center justify-center text-sm text-slate-500">
-                      No instruction-level unified diff detected (functions identical or cosmetic).
+                    <div className="h-full flex items-center justify-center font-mono text-xs text-slate-500">
+                      // No instruction-level unified diff detected (functions identical or cosmetic).
                     </div>
                   )}
                 </div>
@@ -504,23 +536,26 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
               {activeTab === "match" && (
                 <div className="max-w-4xl mx-auto p-6 space-y-6 overflow-auto h-full">
                   {/* Matching Engine Ladder Proof */}
-                  <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-card">
-                    <h4 className="text-sm font-bold text-slate-900 mb-2">
+                  <div className="p-6 rounded-2xl bg-white border border-slate-900 shadow-[3px_3px_0px_#141414] relative">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-indigo-700 block mb-1">
+                      // PASS CLASSIFICATION
+                    </span>
+                    <h4 className="text-base font-black text-slate-900 mb-1">
                       Multi-Pass Matching Attribution
                     </h4>
-                    <p className="text-xs text-slate-500 mb-4">
-                      This function pair was matched during:
+                    <p className="text-xs text-slate-600 mb-4 font-mono">
+                      This function pair was matched during the matching cascade:
                     </p>
-                    <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 flex items-center justify-between">
+                    <div className="p-4 rounded-xl bg-[#efece6] border border-slate-900 flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-sm text-indigo-950 uppercase font-mono">
+                        <span className="font-black text-sm text-slate-950 uppercase font-mono">
                           {fnDiff.matched_pass}
                         </span>
-                        <p className="text-xs text-indigo-700 mt-0.5">
+                        <p className="text-xs text-slate-600 mt-0.5 font-mono">
                           Assigned based on topological CFG and structural invariants
                         </p>
                       </div>
-                      <div className="text-right font-mono font-bold text-indigo-700 text-lg">
+                      <div className="text-right font-mono font-black text-indigo-700 text-lg">
                         {(fnDiff.confidence * 100).toFixed(0)}% Conf
                       </div>
                     </div>
@@ -528,28 +563,31 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
 
                   {/* Fingerprint Similarity Breakdown */}
                   {detail?.fingerprint_breakdown && (
-                    <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-card">
-                      <h4 className="text-sm font-bold text-slate-900 mb-4">
+                    <div className="p-6 rounded-2xl bg-white border border-slate-900 shadow-[3px_3px_0px_#141414]">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-indigo-700 block mb-1">
+                        // STRUCTURAL INVARIANTS
+                      </span>
+                      <h4 className="text-base font-black text-slate-900 mb-4">
                         Fingerprint Metric Invariants
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                          <span className="text-xs text-slate-500 font-medium">Mnemonic Cosine</span>
-                          <div className="text-xl font-bold font-mono text-slate-900 mt-1">
+                        <div className="p-4 rounded-xl bg-[#efece6] border border-slate-900">
+                          <span className="text-xs font-mono font-bold text-slate-600 uppercase">Mnemonic Cosine</span>
+                          <div className="text-xl font-black font-mono text-slate-900 mt-1">
                             {((detail.fingerprint_breakdown.mnemonic_similarity || 0) * 100).toFixed(1)}%
                           </div>
                         </div>
 
-                        <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                          <span className="text-xs text-slate-500 font-medium">WL Subtree Kernel</span>
-                          <div className="text-xl font-bold font-mono text-slate-900 mt-1">
+                        <div className="p-4 rounded-xl bg-[#efece6] border border-slate-900">
+                          <span className="text-xs font-mono font-bold text-slate-600 uppercase">WL Subtree Kernel</span>
+                          <div className="text-xl font-black font-mono text-indigo-700 mt-1">
                             {((detail.fingerprint_breakdown.wl_graph_similarity || 0) * 100).toFixed(1)}%
                           </div>
                         </div>
 
-                        <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                          <span className="text-xs text-slate-500 font-medium">BinDiff MD-Index</span>
-                          <div className="text-xl font-bold font-mono text-slate-900 mt-1">
+                        <div className="p-4 rounded-xl bg-[#efece6] border border-slate-900">
+                          <span className="text-xs font-mono font-bold text-slate-600 uppercase">BinDiff MD-Index</span>
+                          <div className="text-xl font-black font-mono text-slate-900 mt-1">
                             {((detail.fingerprint_breakdown.md_index_similarity || 0) * 100).toFixed(1)}%
                           </div>
                         </div>
@@ -559,8 +597,11 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
 
                   {/* Security Tags */}
                   {fnDiff.security_tags.length > 0 && (
-                    <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-card">
-                      <h4 className="text-sm font-bold text-slate-900 mb-3 flex items-center space-x-2">
+                    <div className="p-6 rounded-2xl bg-white border border-slate-900 shadow-[3px_3px_0px_#141414]">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-rose-700 block mb-1">
+                        // HEURISTIC EVIDENCE
+                      </span>
+                      <h4 className="text-base font-black text-slate-900 mb-3 flex items-center space-x-2">
                         <ShieldAlert className="w-4 h-4 text-rose-600" />
                         <span>Security Check Pattern Evidence ({fnDiff.security_tags.length})</span>
                       </h4>
@@ -568,16 +609,16 @@ export const FunctionDetailModal: React.FC<FunctionDetailModalProps> = ({
                         {fnDiff.security_tags.map((tag, i) => (
                           <div
                             key={i}
-                            className="p-4 rounded-xl bg-rose-50/50 border border-rose-200 text-xs"
+                            className="p-4 rounded-xl bg-rose-50 border border-rose-300 text-xs shadow-2xs"
                           >
-                            <div className="flex items-center justify-between font-bold text-rose-800 mb-1">
+                            <div className="flex items-center justify-between font-bold text-rose-900 mb-1 font-mono">
                               <span>{tag.tag_type}</span>
-                              <span className="font-mono">{(tag.confidence * 100).toFixed(0)}% confidence</span>
+                              <span>{(tag.confidence * 100).toFixed(0)}% confidence</span>
                             </div>
-                            <p className="text-slate-600 mb-2">
+                            <p className="text-slate-700 mb-2 font-mono">
                               {tag.description}
                             </p>
-                            <div className="font-mono text-[11px] p-2.5 rounded-lg bg-stone-900 text-stone-100 shadow-inner">
+                            <div className="font-mono text-[11px] p-2.5 rounded-lg bg-slate-900 text-emerald-400 shadow-inner">
                               {tag.evidence}
                             </div>
                           </div>

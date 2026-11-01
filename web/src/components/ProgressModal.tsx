@@ -80,56 +80,65 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
   }, [jobId, onCompleted, onError]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
-      <div className="w-full max-w-lg rounded-2xl bg-white p-6 sm:p-8 shadow-2xl border border-stone-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#efece6] border-2 border-slate-900 shadow-[6px_6px_0px_#141414] p-6 sm:p-8">
+        {/* 4 Corner Brackets */}
+        <span className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-slate-900" />
+        <span className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-2 border-r-2 border-slate-900" />
+        <span className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-2 border-l-2 border-slate-900" />
+        <span className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-slate-900" />
+
         <div className="flex items-center space-x-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-700">
+          <div className="w-10 h-10 rounded-xl bg-white border border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#141414]">
             {stage === "failed" ? (
-              <AlertOctagon className="w-6 h-6 text-rose-600" />
+              <AlertOctagon className="w-5 h-5 text-rose-600" />
             ) : progress === 100 ? (
-              <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             ) : (
-              <Loader2 className="w-6 h-6 animate-spin text-indigo-700" />
+              <Loader2 className="w-5 h-5 animate-spin text-indigo-700" />
             )}
           </div>
           <div>
-            <h3 className="font-bold text-lg text-slate-900">
-              {stage === "failed" ? "Analysis Encountered an Error" : "Diffing & Patch Analysis in Progress"}
+            <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+              // PIPELINE EXECUTION IN PROGRESS
+            </div>
+            <h3 className="font-black text-lg text-slate-900">
+              {stage === "failed" ? "Analysis Encountered an Error" : "Diffing & Patch Analysis"}
             </h3>
-            <p className="text-xs text-slate-500">
-              Job ID: <code className="font-mono text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">{jobId}</code>
+            <p className="text-xs text-slate-600 font-mono mt-0.5">
+              Job ID: <code className="font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border border-stone-300">{jobId}</code>
             </p>
           </div>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-4">
-          <div className="flex justify-between text-xs font-semibold text-slate-700 mb-2">
+          <div className="flex justify-between text-xs font-mono font-bold text-slate-800 mb-2">
             <span>{STAGE_TITLES[stage] || stage}</span>
-            <span className="tabular-nums font-mono text-indigo-700">{progress}%</span>
+            <span className="tabular-nums text-indigo-700">{progress}%</span>
           </div>
-          <div className="w-full h-3 rounded-full bg-stone-100 overflow-hidden">
+          <div className="w-full h-3.5 rounded-full bg-white border border-slate-900 p-0.5 overflow-hidden shadow-[1px_1px_0px_#141414]">
             <div
-              className="h-full bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-600 transition-all duration-300 rounded-full"
+              className="h-full bg-gradient-to-r from-[#ffb347] via-[#ff5a5f] to-[#ff3d8b] transition-all duration-300 rounded-full"
               style={{ width: `${Math.max(5, progress)}%` }}
             />
           </div>
         </div>
 
         {/* Detail text */}
-        <p className="text-xs text-slate-500 mb-6 italic">
+        <p className="text-xs text-slate-600 mb-6 font-mono italic">
           {details}
         </p>
 
-        {/* Stage Log Snippet */}
-        <div className="rounded-xl bg-stone-900 text-stone-200 p-3.5 font-mono text-[11px] space-y-1 shadow-inner">
-          <div className="flex items-center space-x-1.5 text-stone-400 text-[10px] pb-1.5 border-b border-stone-800">
-            <Terminal className="w-3 h-3 text-indigo-400" />
-            <span>EXECUTION STAGES</span>
+        {/* Stage Log Snippet / Terminal Window */}
+        <div className="rounded-xl bg-slate-950 text-emerald-400 p-4 font-mono text-[11px] space-y-1.5 border border-slate-800 shadow-[2px_2px_0px_#141414]">
+          <div className="flex items-center space-x-2 text-slate-400 text-[10px] pb-2 border-b border-slate-800">
+            <Terminal className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="font-bold uppercase tracking-wider">EXECUTION STAGES (LIVE STREAM)</span>
           </div>
           {logs.map((log, i) => (
             <div key={i} className="truncate">
-              <span className="text-indigo-400">&gt;</span> {log}
+              <span className="text-indigo-400 font-bold">&gt;</span> {log}
             </div>
           ))}
         </div>
