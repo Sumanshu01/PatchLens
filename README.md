@@ -1,8 +1,8 @@
 # PatchLens: Binary Diffing & Automated Security Patch Localization
 
-[![CI](https://github.com/patchlens/patchlens/actions/workflows/ci.yml/badge.svg)](https://github.com/patchlens/patchlens/actions/workflows/ci.yml)
+[![CI](https://github.com/Sumanshu01/PatchLens/actions/workflows/ci.yml/badge.svg)](https://github.com/Sumanshu01/PatchLens/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **PatchLens** is an automated binary diffing and security patch localization platform for stripped ELF binaries. It combines Weisfeiler-Lehman graph kernels, BinDiff topological invariants, and specialized security pattern detectors to pinpoint where security fixes occurred between two releases—without requiring source code or debug symbols.
 
@@ -160,4 +160,19 @@ PatchLens adheres to a **Zero-Code-Execution Invariant**:
 - **Architecture Support**: Currently targets x86-64 ELF binaries. Architecture abstraction hooks exist for ARM64 and MIPS.
 - **Aggressive Inlining**: Functions inlined at `-O3` cannot be recovered as separate entities; their changes are detected within their parent caller.
 - See [`docs/limitations.md`](docs/limitations.md) for full documentation of edge cases.
+
+---
+
+## 8. Developer & Author
+
+**Sumanshu Jindal**
+- **GitHub**: [@Sumanshu01](https://github.com/Sumanshu01)
+- **Repository**: [https://github.com/Sumanshu01/PatchLens](https://github.com/Sumanshu01/PatchLens)
+
+---
+
+## 9. License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright (c) 2026 Sumanshu Jindal.
 

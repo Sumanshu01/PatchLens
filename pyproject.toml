@@ -9,7 +9,7 @@ description = "PatchLens: Binary diffing and security patch analysis foundation 
 readme = "docs/part1-report.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "PatchLens Engineering" }]
+authors = [{ name = "Sumanshu Jindal" }]
 dependencies = [
     "pyelftools>=0.31",
     "capstone>=5.0.0",
