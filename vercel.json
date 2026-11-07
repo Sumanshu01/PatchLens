@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd web && npm install && npm run build",
+  "outputDirectory": "web/dist",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://patchlens-api.onrender.com/api/:path*"
+    },
+    {
+      "source": "/health",
+      "destination": "https://patchlens-api.onrender.com/health"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
