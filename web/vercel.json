@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://patchlens-api.onrender.com/api/:path*"
+      "destination": "https://patchlens-5tt2.onrender.com/api/:path*"
     },
     {
       "source": "/health",
-      "destination": "https://patchlens-api.onrender.com/health"
+      "destination": "https://patchlens-5tt2.onrender.com/health"
     },
     {
       "source": "/(.*)",
