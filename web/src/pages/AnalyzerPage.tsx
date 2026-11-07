@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { GitCompare, Github, ArrowLeft } from "lucide-react";
+import { GitCompare, Github, ArrowLeft, Linkedin } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { UploadView } from "../components/UploadView";
 import { ProgressModal } from "../components/ProgressModal";
@@ -218,11 +218,37 @@ export const AnalyzerPage: React.FC = () => {
 
       {/* Footer matching Landing Page style */}
       <footer className="py-8 bg-white border-t border-stone-900/10 text-xs text-slate-500 relative z-20 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
-            <GitCompare className="w-4 h-4 text-indigo-600" />
-            <span className="font-bold text-slate-800 font-mono">PatchLens</span>
-            <span>— Automated Binary Diffing & Security Patch Localization · 2026</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 text-center sm:text-left">
+            <div className="flex items-center space-x-2">
+              <GitCompare className="w-4 h-4 text-indigo-600" />
+              <span className="font-bold text-slate-800 font-mono">PatchLens</span>
+              <span>— Automated Binary Diffing & Security Patch Localization · 2026</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">|</span>
+            {/* Developer Tag */}
+            <div className="inline-flex items-center space-x-2 bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-full text-slate-600 font-mono text-[11px]">
+              <span className="text-slate-500">Dev:</span>
+              <span className="font-semibold text-slate-800">Sumanshu Jindal</span>
+              <a
+                href="https://github.com/Sumanshu01"
+                target="_blank"
+                rel="noreferrer"
+                title="GitHub: Sumanshu01"
+                className="text-slate-500 hover:text-slate-900 transition-colors inline-flex items-center"
+              >
+                <Github className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sumanshu-jindal01/"
+                target="_blank"
+                rel="noreferrer"
+                title="LinkedIn: sumanshu-jindal01"
+                className="text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center space-x-6 text-slate-600 font-mono text-[11px]">
@@ -236,7 +262,7 @@ export const AnalyzerPage: React.FC = () => {
               New Analysis
             </button>
             <a
-              href="https://github.com"
+              href="https://github.com/Sumanshu01/PatchLens"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center space-x-1.5 hover:text-slate-900 transition-colors"
